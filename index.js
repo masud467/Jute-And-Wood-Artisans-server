@@ -1,11 +1,12 @@
 const express = require('express')
 const app = express()
-const { MongoClient, ServerApiVersion } = require('mongodb');
 const cors = require('cors');
+require('dotenv').config()
+const { MongoClient, ServerApiVersion } = require('mongodb');
 const port = process.env.PORT || 6001;
 
-// Wooden-Crafts
-// e73uVXqPTRKOnOtn
+// 
+// 
 
 // middleware
 app.use(cors())
@@ -13,7 +14,7 @@ app.use(express.json())
 
 
 
-const uri = "mongodb+srv://Wooden-Crafts:e73uVXqPTRKOnOtn@cluster0.uoysey8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const uri = `mongodb+srv://${process.env.SECRET_USER}:${process.env.SECRET_PASS}@cluster0.uoysey8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
