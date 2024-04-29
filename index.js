@@ -84,7 +84,7 @@ async function run() {
       const filter = {_id:new ObjectId(id)}
       const options = { upsert: true };
       const updateItem = req.body
-      const Item ={
+      const item ={
         $set:{
           image:updateItem.image,
           item_name:updateItem.item_name,
@@ -97,7 +97,7 @@ async function run() {
           stockStatus:updateItem.stockStatus,
         }
       }
-      const result = await productCollection.updateOne(filter,Item,options)
+      const result = await productCollection.updateOne(filter,item,options)
       res.send(result)
 
     })
