@@ -32,6 +32,7 @@ async function run() {
 
     const productCollection = client.db("productDB").collection("product")
     const userCollection = client.db("userDB").collection("user")
+    const categoryCollection = client.db("categoryDB").collection("category")
 
     app.post('/user',async(req,res)=>{
       const user = req.body
@@ -100,6 +101,12 @@ async function run() {
       const result = await productCollection.updateOne(filter,item,options)
       res.send(result)
 
+    })
+
+    app.get('/category',async(req,res)=>{
+      const cursor = categoryCollection.find()
+      const result = await cursor.toArray()
+      res.send(result)
     })
 
 
